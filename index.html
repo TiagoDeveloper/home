@@ -64,6 +64,13 @@
   </div>
   <script src="script/jquery.min.js"></script>
   <script>
+
+    (async function logPerfil() {
+      const response = await fetch("https://api.github.com/users/tiagodeveloper");
+      const perfil = await response.json();
+      console.log(perfil);
+    })()
+
   </script>
 
 </body>
