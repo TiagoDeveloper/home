@@ -36,11 +36,23 @@
         margin-left:auto;
       }
 
+      #card-container {
+        margin: 20px;
+        
+      }
+      .card {
+        margin: 20px;
+        padding: 15px;
+        border: #0a0a23 solid 1px;
+      }
+
     </style>
     
     <title>home</title>
 </head>
 <body>
+
+  
 
   <div class="Navbar">
     <div class="Navbar__Link Navbar__Link-brand">
@@ -62,14 +74,76 @@
       Link
     </div> -->
   </div>
+
+  <section id="card-container"></section>
   <script src="script/jquery.min.js"></script>
   <script>
 
-    (async function logPerfil() {
-      const response = await fetch("https://api.github.com/users/tiagodeveloper");
-      const perfil = await response.json();
-      console.log(perfil);
-    })()
+    // (async function logPerfil() {
+    //   const response = await fetch("https://api.github.com/users/tiagodeveloper");
+    //   const perfil = await response.json();
+    //   console.log(perfil);
+    // })()
+
+    const cardContainer = document.getElementById('card-container');
+
+    async function createCard(cardData) {
+      // Create the card element
+      const card = document.createElement('div');
+      card.classList.add('card'); // Add a CSS class for styling
+
+      // Create elements for card content (image, title, description, etc.)
+      // const image = document.createElement('img');
+      // image.src = cardData.imageUrl; // Replace with your data source
+      const title = document.createElement('h3');
+      title.textContent = cardData.title;
+      const description = document.createElement('p');
+      description.textContent = cardData.description;
+
+      // Optionally, add buttons or other interactive elements
+
+      // Append content elements to the card
+      // card.appendChild(image);
+      card.appendChild(title);
+      card.appendChild(description);
+
+      return card;
+    }
+
+    // Sample card data (replace with your actual data source)
+    // const cardData = [
+    //   { imageUrl: 'image1.jpg', title: 'Card Title 1', description: 'Card description for card 1' },
+    //   { imageUrl: 'image2.jpg', title: 'Card Title 2', description: 'Card description for card 2' },
+    //   // Add more card data objects as needed
+    // ];
+
+    
+    async function getRepos() {
+      const response = await fetch("https://api.github.com/users/TiagoDeveloper/repos");
+      const data = await response.json();
+      return data;
+    }
+    
+    getRepos().then(repos => {
+
+      console.log(repos)
+      repos.forEach(async data => {
+        const card = await createCard({title: data.name , description: data.full_name});
+        cardContainer.appendChild(card);
+      });
+
+    });
+
+    // Create cards and append them to the container
+    // cardData.forEach(async data => {
+    //   const card = await createCard(data);
+    //   cardContainer.appendChild(card);
+    // });
+
+    // Apply Flexbox styles to the container element using CSS
+    cardContainer.style.display = 'flex';
+    cardContainer.style.flexWrap = 'wrap'; // Allow cards to wrap to multiple lines
+    // Add other Flexbox properties as needed for spacing and alignment
 
   </script>
 
