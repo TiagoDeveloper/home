@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Ana Clara Silva",
+    "birthday": "1992-07-21",
+    "address": "Rua das Flores, 123, Belo Horizonte - MG",
+    "number_document": "123.456.789-00",
+    "email": "anaclara.silva@email.com"
+  },
+  {
+    "name": "João Pedro Santos",
+    "birthday": "1985-03-10",
+    "address": "Avenida Brasil, 456, Contagem - MG",
+    "number_document": "987.654.321-00",
+    "email": "joao.santos@email.com"
+  },
+  {
+    "name": "Maria Eduarda Oliveira",
+    "birthday": "2001-11-05",
+    "address": "Praça Sete, 789, Nova Lima - MG",
+    "number_document": "111.222.333-44",
+    "email": "maria.eduarda@email.com"
+  }
+]
